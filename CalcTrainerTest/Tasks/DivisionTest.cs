@@ -59,7 +59,7 @@ namespace CalcTrainerTest.Tasks
 
             _task = new Division(_numberGenerator.Object, _input.Object, _output.Object, 1);
 
-            Assert.IsTrue(_task.Quotient > 0);
+            Assert.IsTrue(_task.Quotient != 0);
         }
 
         [TestMethod]
@@ -70,7 +70,29 @@ namespace CalcTrainerTest.Tasks
 
             _task = new Division(_numberGenerator.Object, _input.Object, _output.Object, 1);
 
-            Assert.IsTrue(_task.Quotient > 1);
+            Assert.IsTrue(_task.Quotient != 1);
+        }
+
+        [TestMethod]
+        public void Constructor_ZeroForDivisor_DivisorNotZero()
+        {
+            var counter = -1;
+            _numberGenerator.Setup(x => x.Generate(1, 1)).Returns(() => counter += 1);
+
+            _task = new Division(_numberGenerator.Object, _input.Object, _output.Object, 1);
+
+            Assert.IsTrue(_task.Divisor != 0);
+        }
+
+        [TestMethod]
+        public void Constructor_OneForDivisor_DivisorNotOne()
+        {
+            var counter = 0;
+            _numberGenerator.Setup(x => x.Generate(1, 1)).Returns(() => counter += 1);
+
+            _task = new Division(_numberGenerator.Object, _input.Object, _output.Object, 1);
+
+            Assert.IsTrue(_task.Divisor != 1);
         }
     }
 }

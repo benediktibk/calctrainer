@@ -9,12 +9,12 @@ namespace CalcTrainer.Tasks
             do
             {
                 Quotient = NumberGenerator.Generate(1, 1);
-            } while (Quotient == 0);
+            } while (Quotient == 0 || Quotient == 1);
 
             do
             {
                 Divisor = NumberGenerator.Generate(divisorPlaces, 0);
-            } while (Divisor == 0);
+            } while (Divisor == 0 || Quotient == 1);
 
             Dividend = Quotient*Divisor;
         }
