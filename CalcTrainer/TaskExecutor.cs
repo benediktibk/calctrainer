@@ -4,13 +4,13 @@ namespace CalcTrainer
 {
     public class TaskExecutor
     {
-        private readonly TaskGenerator _taskGenerator;
+        private readonly ITaskGenerator _taskGenerator;
         private readonly IOutput _output;
         private readonly IStopWatch _stopWatch;
         private int _correctGuesses;
         private int _wrongGuesses;
 
-        public TaskExecutor(TaskGenerator taskGenerator, IOutput output, IStopWatch stopWatch)
+        public TaskExecutor(ITaskGenerator taskGenerator, IOutput output, IStopWatch stopWatch)
         {
 
             _taskGenerator = taskGenerator;

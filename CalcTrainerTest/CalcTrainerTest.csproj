@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -52,12 +55,17 @@
   <ItemGroup>
     <Compile Include="NumberGeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskExecutorTest.cs" />
+    <Compile Include="Tasks\DivisionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalcTrainer\CalcTrainer.csproj">
       <Project>{EB439426-005C-4644-9AC2-AC749614EAE0}</Project>
       <Name>CalcTrainer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

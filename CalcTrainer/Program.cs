@@ -11,8 +11,11 @@ namespace CalcTrainer
             var consoleInput = new ConsoleInput();
             var consoleOutput = new ConsoleOutput();
             var taskGenerator = new TaskGenerator(numberGenerator, consoleInput, consoleOutput);
-            var stopWatch = new StopWatch(60*10);
+            const int time = 60*10;
+            var stopWatch = new StopWatch(time);
             var taskExecutor = new TaskExecutor(taskGenerator, consoleOutput, stopWatch);
+
+            consoleOutput.WriteLine("You have " + time + "s for the tasks.");
 
             taskExecutor.Run();
 

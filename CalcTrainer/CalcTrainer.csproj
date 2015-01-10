@@ -47,6 +47,7 @@
     <Compile Include="INumberGenerator.cs" />
     <Compile Include="IOutput.cs" />
     <Compile Include="IStopWatch.cs" />
+    <Compile Include="ITaskGenerator.cs" />
     <Compile Include="NumberGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="TaskExecutor.cs" />
     <Compile Include="TaskGenerator.cs" />
     <Compile Include="Tasks\Division.cs" />
+    <Compile Include="Tasks\ITask.cs" />
     <Compile Include="Tasks\Task.cs" />
   </ItemGroup>
   <ItemGroup>

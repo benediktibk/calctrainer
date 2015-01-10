@@ -2,7 +2,7 @@
 
 namespace CalcTrainer
 {
-    public class TaskGenerator
+    public class TaskGenerator : ITaskGenerator
     {
         private readonly INumberGenerator _numberGenerator;
         private readonly IInput _input;
@@ -15,7 +15,7 @@ namespace CalcTrainer
             _output = output;
         }
 
-        public Task Generate()
+        public ITask Generate()
         {
             return new Division(_numberGenerator, _input, _output, 1);
         }

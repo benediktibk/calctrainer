@@ -1,6 +1,6 @@
 ﻿namespace CalcTrainer.Tasks
 {
-    public abstract class Task
+    public abstract class Task : ITask
     {
         protected Task(INumberGenerator numberGenerator, IInput input, IOutput output)
         {
