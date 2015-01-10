@@ -1,6 +1,6 @@
 ﻿namespace CalcTrainer
 {
-    public interface IConsoleInput
+    public interface IInput
     {
         double ReadNumber();
     }

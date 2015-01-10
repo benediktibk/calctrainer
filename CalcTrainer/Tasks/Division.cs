@@ -8,7 +8,7 @@ namespace CalcTrainer.Tasks
         private readonly double _divisor;
         private readonly double _dividend;
 
-        public Division(INumberGenerator numberGenerator, IConsoleInput consoleInput, int divisorPlaces) : base(numberGenerator, consoleInput)
+        public Division(INumberGenerator numberGenerator, IInput input, IOutput output, int divisorPlaces) : base(numberGenerator, input, output)
         {
             do
             {
@@ -25,8 +25,8 @@ namespace CalcTrainer.Tasks
 
         public override bool Execute()
         {
-            Console.WriteLine("What is the result of " + _dividend + ":" + _divisor + " ?");
-            var attempt = ConsoleInput.ReadNumber();
+            Output.WriteLine("What is the result of " + _dividend + ":" + _divisor + " ?");
+            var attempt = Input.ReadNumber();
             return Math.Abs((attempt - _quotient)/_quotient) < 1e-10;
         }
     }

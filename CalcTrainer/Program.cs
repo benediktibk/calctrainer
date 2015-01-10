@@ -9,14 +9,16 @@ namespace CalcTrainer
             var seed = Guid.NewGuid().GetHashCode();
             var numberGenerator = new NumberGenerator(seed);
             var consoleInput = new ConsoleInput();
-            var taskGenerator = new TaskGenerator(numberGenerator, consoleInput);
-            var taskExecutor = new TaskExecutor(taskGenerator, 60*10);
+            var consoleOutput = new ConsoleOutput();
+            var taskGenerator = new TaskGenerator(numberGenerator, consoleInput, consoleOutput);
+            var stopWatch = new StopWatch(10);
+            var taskExecutor = new TaskExecutor(taskGenerator, consoleOutput, stopWatch);
 
             taskExecutor.Run();
 
-            Console.WriteLine("\nTime is up!");
-            Console.WriteLine("You have solved " + taskExecutor.TaskCount + " tasks with an accuracy of " + taskExecutor.Accuracy * 100 + "%");
-            Console.WriteLine("\npress any key to exit");
+            consoleOutput.WriteLine("\nTime is up!");
+            consoleOutput.WriteLine("You have solved " + taskExecutor.TaskCount + " tasks with an accuracy of " + taskExecutor.Accuracy * 100 + "%");
+            consoleOutput.WriteLine("\npress any key to exit");
             Console.ReadKey();
         }
     }

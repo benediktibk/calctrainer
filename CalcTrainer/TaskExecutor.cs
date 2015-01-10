@@ -1,26 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalcTrainer
 {
     public class TaskExecutor
     {
-        private readonly int _duration;
         private readonly TaskGenerator _taskGenerator;
+        private readonly IOutput _output;
+        private readonly IStopWatch _stopWatch;
         private int _correctGuesses;
         private int _wrongGuesses;
 
-        public TaskExecutor(TaskGenerator taskGenerator, int duration)
+        public TaskExecutor(TaskGenerator taskGenerator, IOutput output, IStopWatch stopWatch)
         {
-            if (duration <= 0)
-                throw new ArgumentOutOfRangeException("duration", "must be positive");
 
-            _duration = duration;
             _taskGenerator = taskGenerator;
+            _output = output;
+            _stopWatch = stopWatch;
         }
 
         public double Accuracy
@@ -35,18 +30,16 @@ namespace CalcTrainer
 
         public void Run()
         {
-            var startTime = DateTime.Now;
+            _stopWatch.Restart();
             TaskCount = 0;
             _correctGuesses = 0;
             _wrongGuesses = 0;
-            double elapsed;
 
             do
             {
                 RunTask();
                 TaskCount++;
-                elapsed = (DateTime.Now - startTime).TotalSeconds;
-            } while (elapsed < _duration);
+            } while (!_stopWatch.TimeUp);
         }
 
         private void RunTask()
@@ -61,12 +54,12 @@ namespace CalcTrainer
                 if (solved)
                 {
                     _correctGuesses++;
-                    Console.WriteLine("Correct!");
+                    _output.WriteLine("Correct!");
                 }
                 else
                 {
                     _wrongGuesses++;
-                    Console.WriteLine("Wrong!");
+                    _output.WriteLine("Wrong!");
                 }
             } while (!solved);
         }

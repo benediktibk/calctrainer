@@ -5,17 +5,19 @@ namespace CalcTrainer
     public class TaskGenerator
     {
         private readonly INumberGenerator _numberGenerator;
-        private readonly IConsoleInput _consoleInput;
+        private readonly IInput _input;
+        private readonly IOutput _output;
 
-        public TaskGenerator(INumberGenerator numberGenerator, IConsoleInput consoleInput)
+        public TaskGenerator(INumberGenerator numberGenerator, IInput input, IOutput output)
         {
             _numberGenerator = numberGenerator;
-            _consoleInput = consoleInput;
+            _input = input;
+            _output = output;
         }
 
         public Task Generate()
         {
-            return new Division(_numberGenerator, _consoleInput, 1);
+            return new Division(_numberGenerator, _input, _output, 1);
         }
     }
 }

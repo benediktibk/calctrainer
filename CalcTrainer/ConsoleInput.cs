@@ -2,7 +2,7 @@
 
 namespace CalcTrainer
 {
-    public class ConsoleInput : IConsoleInput
+    public class ConsoleInput : IInput
     {
         public double ReadNumber()
         {
