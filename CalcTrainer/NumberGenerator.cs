@@ -17,7 +17,7 @@ namespace CalcTrainer
 
             for (var i = (-1)*afterDecimalPlaces; i < preDecimalPlaces; ++i)
             {
-                var place = _random.Next(0, 9);
+                var place = _random.Next(0, 10);
                 result += place*Math.Pow(10, i);
             }
 

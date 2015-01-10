@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskExecutorTest.cs" />
     <Compile Include="Tasks\DivisionTest.cs" />
+    <Compile Include="Tasks\MultiplicationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalcTrainer\CalcTrainer.csproj">
