@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using CalcTrainer;
 using CalcTrainer.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -47,6 +49,28 @@ namespace CalcTrainerTest.Tasks
             _input.Setup(x => x.ReadNumber()).Returns(8);
 
             Assert.IsFalse(_task.Execute());
+        }
+
+        [TestMethod]
+        public void Constructor_ZeroForQuotient_QuotientNotZero()
+        {
+            var counter = -1;
+            _numberGenerator.Setup(x => x.Generate(1, 1)).Returns(() => counter += 1);
+
+            _task = new Division(_numberGenerator.Object, _input.Object, _output.Object, 1);
+
+            Assert.IsTrue(_task.Quotient > 0);
+        }
+
+        [TestMethod]
+        public void Constructor_OneForQuotient_QuotientNotOne()
+        {
+            var counter = 0;
+            _numberGenerator.Setup(x => x.Generate(1, 1)).Returns(() => counter += 1);
+
+            _task = new Division(_numberGenerator.Object, _input.Object, _output.Object, 1);
+
+            Assert.IsTrue(_task.Quotient > 1);
         }
     }
 }
