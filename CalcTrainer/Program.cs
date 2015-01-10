@@ -6,7 +6,8 @@ namespace CalcTrainer
     {
         static void Main(string[] args)
         {
-            var numberGenerator = new NumberGenerator(5);
+            var seed = Guid.NewGuid().GetHashCode();
+            var numberGenerator = new NumberGenerator(seed);
             var consoleInput = new ConsoleInput();
             var taskGenerator = new TaskGenerator(numberGenerator, consoleInput);
             var taskExecutor = new TaskExecutor(taskGenerator, 60*10);
