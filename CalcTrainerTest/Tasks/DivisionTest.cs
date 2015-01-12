@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using CalcTrainer;
+﻿using CalcTrainer;
 using CalcTrainer.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

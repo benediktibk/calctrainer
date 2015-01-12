@@ -15,11 +15,12 @@ namespace CalcTrainerTest
         }
 
         [TestMethod]
-        public void Generate_3And2()
+        public void Generate_ValidRange()
         {
             var result = _numberGenerator.Generate(3, 2);
 
-            Assert.AreEqual(452.23, result, 1e-10);
+            Assert.IsTrue(result < 1e3);
+            Assert.IsTrue(result >= 0);
         }
 
         [TestMethod]
